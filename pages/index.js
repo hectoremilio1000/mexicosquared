@@ -159,7 +159,7 @@ export default function Home() {
       {espa ? (
         <>
           {/* Banner principal con Swiper */}
-          <MySwiper />
+          <MySwiper className="pt-4" />
 
           <div className="justify-center bg-black w-full section-info-banner">
             <div className="max-w-[90%] mx-auto flex-col md:flex-row flex overflow-hidden items-center px-6">

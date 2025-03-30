@@ -53,7 +53,7 @@ function NavBar() {
 
   return (
     <div className={navbar ? "header-container sticky" : "header-container"}>
-      <div className="max-w-[1184px] flex items-center justify-between flex-wrap w-full mx-auto py-4  px-4 md:px-6">
+      <div className="max-w-[1184px] flex items-center justify-between flex-wrap w-full mx-auto py-4 mt-2  px-4 md:px-6">
         {/* <Link href="/">
         <Image src={logo} width={100}
           alt="llorona" priority />
