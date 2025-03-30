@@ -113,7 +113,7 @@ export default function Home() {
       {/* HEAD con meta tags */}
       {espa ? (
         <Head>
-          <title>GrowthSuite | Desarrollo de Software a la Medida</title>
+          <title>GrowthSuite | Desarrollo de Software a la Medida </title>
           <link rel="icon" href="../favicon.ico" />
           <meta
             name="description"
