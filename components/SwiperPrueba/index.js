@@ -85,7 +85,7 @@ const MySwiper = () => {
   };
 
   return (
-    <div className="mt-4">
+    <div className="mt-8">
       <div
         className={`${styles.sectionHero} ${isModalOpen ? styles.dimmed : ""}`}
       >
