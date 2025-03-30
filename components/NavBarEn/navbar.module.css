@@ -1,0 +1,38 @@
+/* .navbar {
+  padding: 0 !important;
+}
+.ant-layout-header {
+  padding: 0 !important;
+}
+
+.menuPrincipal {
+  width: fit-content !important;
+  margin-left: auto !important;
+}
+
+.logoPrincipal {
+  margin-left: 19px !important;
+  float: left !important;
+}
+
+.navbar-brand {
+  padding-top: 0 !important;
+}
+
+.container {
+  padding: 0 !important;
+}
+
+.item-nav {
+  margin-left: auto;
+} */
+
+.ant-menu-horizontal{
+  border-bottom: 0px !important;
+}
+@media screen and (max-width: 575px) {
+  .container {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+}

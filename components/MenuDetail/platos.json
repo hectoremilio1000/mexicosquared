@@ -1,0 +1,146 @@
+[
+    {
+        "id": 1,
+        "nombre": "Tacos de Chicharron Norteño (3)(sonora)",
+        "precio": "119",
+        "category": "alimentos",
+        "list_category" : "Tacos",
+        "description" : "Tacos de Chicharron Norteño, marinado en jugo de naranja, laurel y hierbas finas"
+    },
+    {
+        "id": 2,
+        "nombre": "Pizza Llorona",
+        "precio": "279",
+        "category": "alimentos",
+        "list_category" : "Platos Fuertes",
+        "description" : "Chorizo, Champiñon y Pepperonni"
+    },
+    { 
+        "id": 3,
+        "nombre": "Hamburguesa Llorona",
+        "precio": "179",
+        "category": "alimentos",
+        "list_category" : "Platos Fuertes",
+        "description" : "Hamburguesa con toccino, aros de cebolla y cheddar"
+    },
+    {
+        "id": 4,
+        "nombre": "Picaditas de cochinita pibil (3)(yucatán)",
+        "precio": "129",
+        "category": "alimentos",
+        "list_category" : "Entradas",
+        "description" : "Classic greek salad, barrel aged feta cheese, bread"
+    },
+    {
+        "id": 5,
+        "nombre": "Boloitas crocantes de camarón con aderezo chipotle (Nayarit)",
+        "precio": "149",
+        "category": "alimentos",
+        "list_category" : "Entradas",
+        "description" : "Bolitas crujientes por fuera y rellenas de camaron acompañadas con papas gajo y un aderezo chipotle"
+    },
+    {
+        "id": 6,
+        "nombre": "Aguachile verde estilo (Sinaloa)",
+        "precio": "220",
+        "category": "alimentos",
+        "list_category" : "Entradas",
+        "description" : "Camarones cocinados en chiles y jugo de limón"
+    },
+    {
+        "id": 7,
+        "nombre": "Plato Llorón (2 personas)",
+        "precio": "329",
+        "category": "alimentos",
+        "list_category" : "Entradas",
+        "description" : "Bolitas crocantes, papas gajo, papas a la frances y boneless de pollo"
+    },
+    {
+        "id": 8,
+        "nombre": "Guacamoles",
+        "precio": "149",
+        "category": "alimentos",
+        "list_category" : "Entradas",
+        "description" : "Aguacate molido o picado, al que se agrega cebolla, tomate y chile verde acompañadas de chicharrón"
+    },
+    {
+        "id": 9,
+        "nombre": "Tostadas de camarón (1)(veracruz)",
+        "precio": "79",
+        "category": "alimentos",
+        "list_category" : "Entradas",
+        "description" : "Tostada de camarón con aguacate, tomate rojo y aderezo chipotle"
+    },
+    {
+        "id": 10,
+        "nombre": "Sopa de setas (Morelos)",
+        "precio": "129",
+        "category": "alimentos",
+        "list_category" : "Sopas",
+        "description" : "Pancita de setas con epazote, cebolla, mantequilla, guajillo y tomate"
+    },
+    {
+        "id": 11,
+        "nombre": "Caldo de camarón (Sinaloa)",
+        "precio": "179",
+        "category": "alimentos",
+        "list_category" : "Sopas",
+        "description" : "Caldo rojo hecho con chiles y cocinado con verduras y camarón"
+    },
+    {
+        "id": 12,
+        "nombre": "Carajillo Oxaqueño",
+        "precio": "199",
+        "category": "bebidas",
+        "list_category" : "artesanales",
+        "description" : "Cafe - Mezcal, Licor 43 - Kahlúa"
+    },
+    {
+        "id": 13,
+        "nombre": "Guacamole Llorón",
+        "precio": "179",
+        "category": "alimentos",
+        "list_category" : "Entradas",
+        "description" : "Guacamole tradicional con chapulines y cacahuates oaxaqueños"
+    },
+    {
+        "id": 14,
+        "nombre": "Naranja Brava",
+        "precio": "199",
+        "category": "bebidas",
+        "list_category" : "artesanales",
+        "description" : "Mezcal espadín - Anchi Reyes, Naranja - Limón"
+    },
+    {
+        "id": 15,
+        "nombre": "Cate de mi corazon",
+        "precio": "179",
+        "category": "bebidas",
+        "list_category" : "artesanales",
+        "description" : "Mezcal arroqueño - Aguacate, Piña - Licor 43"
+    },
+    {
+        "id": 16,
+        "nombre": "Martín de mazapán",
+        "precio": "199",
+        "category": "bebidas",
+        "list_category" : "artesanales",
+        "description" : "Grey Goose - Frangélico, Leche evaporada - Mazapán"
+    },
+    {
+        "id": 17,
+        "nombre": "Flor de Arrabal",
+        "precio": "174",
+        "category": "bebidas",
+        "list_category" : "artesanales",
+        "description" : "Piña - Mezcal Tobalá, Albahaca - Limón"
+    },
+    {
+        "id": 18,
+        "nombre": "Margara Sagrada",
+        "precio": "189",
+        "category": "bebidas",
+        "list_category" : "artesanales",
+        "description" : "Mezcal espadín - Jamaica del Sudán, Chile manzano - Limón, Miel de agave"
+    }
+]

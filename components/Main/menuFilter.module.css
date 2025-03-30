@@ -1,0 +1,24 @@
+.menu_categories {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.menu_categories>button {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 14px 10px;
+    color: #000;
+}
+
+.menu_categories .activeM {
+    background-color: #058344 !important;
+    color: #fff;
+}
+
+.menu_categories>button:hover {
+    transition: all 0.5s;
+    background-color: #058344;
+    color: #fff;
+}

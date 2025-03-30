@@ -1,0 +1,15 @@
+.containerAbout {
+  -webkit-text-fill-color: inherit;
+  object-fit: fill;
+  background-color: #fff;
+  background-image: url("https://imagenesrutalab.s3.us-east-1.amazonaws.com/growthsuite/casosestudio/growth-suite-3d.jpg");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-clip: border-box;
+  max-height: 1400px;
+  margin-top: 0;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  overflow: hidden;
+}

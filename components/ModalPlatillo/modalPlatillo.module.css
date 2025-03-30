@@ -1,0 +1,66 @@
+.containerModal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+}
+
+.containerModal::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000087;
+}
+
+.containerModal .cardModal {
+    width: 100%;
+    background-color: #fff;
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+    z-index: 4000;
+    padding: 20px;
+}
+
+.cardModal .bodyModal {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+
+
+.bodyModal .carruselModal img {
+    width: 100%;
+}
+
+.descriptionPlato {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.footerModal {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.footerModal button {
+    display: inline-block;
+    text-align: center;
+    padding: 20px;
+    background-color: black;
+    color: #fff;
+    border-radius: 4px;
+}

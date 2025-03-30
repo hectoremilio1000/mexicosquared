@@ -1,0 +1,117 @@
+.header-container-white {
+  background-color: white !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 5px 0px;
+  z-index: 3000;
+}
+
+.header-container-white.sticky {
+  background-color: white !important;
+}
+
+.header-container-white .row-qh {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.linkswraper-white {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.linkswraper-white li {
+  height: max-content;
+  list-style: none;
+  text-align: center;
+}
+
+.linkswraper-white li::marker {
+  display: none;
+  content: "";
+}
+
+.nav-link-white {
+  display: block;
+  text-decoration: none;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  color: #1e1e1e;
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.header-icons-white {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-icons-white .icon {
+  color: #1e1e1e;
+}
+
+@media only screen and (min-width: 768px) {
+  .toggle-icon-white {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  /* css de nabvar */
+  .header-container-white {
+    padding: 10px 20px !important;
+  }
+
+  .header-logo-white {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #1e1e1e !important;
+    width: 100%;
+  }
+
+  .header-derecha-white {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: #1e1e1e !important;
+    width: 100%;
+  }
+
+  .linkswraper-white {
+    position: fixed;
+    top: 120px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background-color: #fff;
+    width: 0;
+    padding: 0;
+    transition: all ease-in 0.5s;
+    visibility: hidden;
+    overflow: hidden;
+  }
+
+  .linkswraper-white.active {
+    visibility: visible;
+    display: flex !important;
+    width: 100%;
+    padding: 0 5px;
+  }
+
+  .linkswraper-white .nav-link-white {
+    color: #1e1e1e;
+    padding: 20px 0px !important;
+  }
+
+  .header-icons-white {
+    display: none !important;
+  }
+}

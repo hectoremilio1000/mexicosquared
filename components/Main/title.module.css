@@ -1,0 +1,31 @@
+.fontTitlemain {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.bullets {
+  list-style-type: circle !important;
+  color: black;
+}
+
+ul.a {
+  list-style-type: circle;
+}
+
+.list {
+  list-style-type: circle !important;
+}
+
+.fontTitleSub {
+  font-size: 1.5rem;
+  color: #1c8665;
+  text-align: center !important;
+  font-weight: 800;
+}
+
+.fontTitleline {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+}
