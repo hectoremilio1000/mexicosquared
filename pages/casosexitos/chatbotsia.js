@@ -150,7 +150,7 @@ function MejorarProcesos() {
     <>
       <NavBar />
 
-      <div className="bg-gray-50 flex flex-col items-center px-4 py-8 md:px-16 pt-24 md:pt-36">
+      <div className="bg-gray-50 flex flex-col items-center px-4 py-8 md:px-16 pt-36 md:pt-36">
         {/* Encabezado */}
         <div className="text-center max-w-4xl">
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
@@ -160,49 +160,58 @@ function MejorarProcesos() {
             {info[0].parrafo1}
           </p>
         </div>
-
-        {/* Imagen destacada */}
-        <div className="w-full flex flex-col items-center gap-4 justify-start p-2 bg-[#fbfbfad9] border-[#e5e5e5] max-w-2xl mt-6">
+        <div className="w-full flex flex-col items-center gap-4 justify-start p-2 bg-[#fbfbfad9] border-[#e5e5e5] max-w-2xl">
           <img
-            className="w-full object-contain rounded-[1.2em]"
+            className="w-1/2 object-cover rounded-[1.2em]"
             src={info[0].imagen1}
-            alt="Mejora de procesos"
+            alt=""
           />
         </div>
-        <div className="mt-6 mb-4">
+
+        {/* Imagen destacada */}
+        <div>
           {/* Botón que ABRE el nuevo modal de Demo Gratis */}
-          <div className="flex justify-center">
-            <Button
-              type="primary"
-              shape="round"
-              size="large"
-              className="
-      mt-2 !text-[#007bff]
-      !bg-[#FFD700]
-      
-      !border-none
-      !rounded-[14px]
-      !px-[1.8em]
-      !py-[1.2em]
-      !text-[1.42em]
-      !leading-[1.2em]
-      !font-bold
-      tracking-[0.025em]
-      transition-shadow
-      duration-300
-      shadow-[0_7px_80px_-12px_rgba(0,0,0,1)]
-      hover:shadow-[0_7px_80px_-12px_rgba(0,0,0,0.7)]
-    "
-            >
-              <a
-                href="https://wa.me/5215531491808?text=Hola%20quiero%20un%20software%20exitoso%20con%20growthsuite"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="no-underline !text-[#007bff]"
-              >
-                SOLICITA TU DEMO DE SOFTWARE GRATIS
-              </a>
-            </Button>
+          <div className="relative z-20 flex flex-col justify-center items-center h-full text-white">
+            <div>
+              <div className="text-center"></div>
+            </div>
+            {/* Botón que ABRE el modal “Demo Gratis” */}
+            <div className="mt-6 mb-4">
+              {/* Botón que ABRE el nuevo modal de Demo Gratis */}
+              <div className="flex justify-center">
+                <Button
+                  type="primary"
+                  shape="round"
+                  size="large"
+                  className="
+                                mt-2 !text-[#007bff]
+                                !bg-[#FFD700]
+                                
+                                !border-none
+                                !rounded-[14px]
+                                !px-[1.8em]
+                                !py-[1.6em]
+                                !text-[1.42em]
+                                !leading-[1.2em]
+                                !font-bold
+                                tracking-[0.025em]
+                                transition-shadow
+                                duration-300
+                                shadow-[0_7px_80px_-12px_rgba(0,0,0,1)]
+                                hover:shadow-[0_7px_80px_-12px_rgba(0,0,0,0.7)]
+                              "
+                >
+                  <a
+                    href="https://wa.me/5215531491808?text=Hola%20quiero%20un%20software%20exitoso%20con%20growthsuite"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="no-underline !text-[#007bff]"
+                  >
+                    SOLICITA TU DEMO <br /> DE SOFTWARE GRATIS
+                  </a>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -236,7 +245,7 @@ function MejorarProcesos() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Razón 1 */}
               <div className="bg-gray-100 flex flex-col gap-3 items-start p-6 md:p-8">
-                <span className="inline-block p-4 rounded text-white bg-principal">
+                <span className="inline-block p-4 rounded text-white bg-primary">
                   1
                 </span>
                 <h5 className="text-[16px] md:text-[18px] font-bold">
@@ -249,7 +258,7 @@ function MejorarProcesos() {
 
               {/* Razón 2 */}
               <div className="bg-gray-100 flex flex-col gap-3 items-start p-6 md:p-8">
-                <span className="inline-block p-4 rounded text-white bg-principal">
+                <span className="inline-block p-4 rounded text-white bg-primary">
                   2
                 </span>
                 <h1 className="text-[16px] md:text-[18px] font-bold">
@@ -262,7 +271,7 @@ function MejorarProcesos() {
 
               {/* Razón 3 */}
               <div className="bg-gray-100 flex flex-col gap-3 items-start p-6 md:p-8">
-                <span className="inline-block p-4 rounded text-white bg-principal">
+                <span className="inline-block p-4 rounded text-white bg-primary">
                   3
                 </span>
                 <h1 className="text-[16px] md:text-[18px] font-bold">
@@ -294,9 +303,7 @@ function MejorarProcesos() {
             </p>
           </div>
         </div>
-
-        {/* CTA final */}
-        <div className="bg-gray-50 flex flex-col items-center px-4 py-8 md:px-16 pt-6 md:pt-12">
+        <div className="bg-gray-50 flex flex-col items-center py-2 md:px-16 pt-6 md:pt-12">
           <div className="text-center max-w-4xl">
             <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight text-center">
               {info[0].titulo4}
@@ -305,14 +312,14 @@ function MejorarProcesos() {
           <div className="relative w-full max-w-3xl rounded-3xl overflow-hidden h-64 md:h-96">
             {/* Imagen de fondo */}
             <img
-              src="https://imagenesrutalab.s3.us-east-1.amazonaws.com/growthsuite/casosExitopage/iachatbots.png"
+              src="https://imagenesrutalab.s3.us-east-1.amazonaws.com/growthsuite/casosExitopage/iachat.png"
               alt="Background"
               className="absolute top-0 left-0 w-full h-full object-cover z-0"
             />
             {/* Gradiente superpuesto */}
             <div className="absolute top-0 left-0 w-full h-full bg-opacity-75 bg-black"></div>
             {/* Contenido */}
-            <div className="relative z-20 flex flex-col justify-center items-center h-full p-8 text-white">
+            <div className="relative z-20 flex flex-col justify-center items-center h-full text-white">
               <div>
                 <div className="mb-8 text-center">
                   <p className="text-3xl md:text-4xl font-bold text-white">
@@ -331,22 +338,22 @@ function MejorarProcesos() {
                     shape="round"
                     size="large"
                     className="
-                    mt-2 !text-[#007bff]
-                    !bg-[#FFD700]
-                    
-                    !border-none
-                    !rounded-[14px]
-                    !px-[1.8em]
-                    !py-[1.2em]
-                    !text-[1.42em]
-                    !leading-[1.2em]
-                    !font-bold
-                    tracking-[0.025em]
-                    transition-shadow
-                    duration-300
-                    shadow-[0_7px_80px_-12px_rgba(0,0,0,1)]
-                    hover:shadow-[0_7px_80px_-12px_rgba(0,0,0,0.7)]
-                  "
+                      mt-2 !text-[#007bff]
+                      !bg-[#FFD700]
+                      
+                      !border-none
+                      !rounded-[14px]
+                      !px-[1.8em]
+                      !py-[1.6em]
+                      !text-[1.42em]
+                      !leading-[1.2em]
+                      !font-bold
+                      tracking-[0.025em]
+                      transition-shadow
+                      duration-300
+                      shadow-[0_7px_80px_-12px_rgba(0,0,0,1)]
+                      hover:shadow-[0_7px_80px_-12px_rgba(0,0,0,0.7)]
+                    "
                   >
                     <a
                       href="https://wa.me/5215531491808?text=Hola%20quiero%20un%20software%20exitoso%20con%20growthsuite"
@@ -354,7 +361,7 @@ function MejorarProcesos() {
                       rel="noopener noreferrer"
                       className="no-underline !text-[#007bff]"
                     >
-                      SOLICITA TU DEMO DE SOFTWARE GRATIS
+                      SOLICITA TU DEMO <br /> DE SOFTWARE GRATIS
                     </a>
                   </Button>
                 </div>
@@ -362,6 +369,7 @@ function MejorarProcesos() {
             </div>
           </div>
         </div>
+        {/* CTA final */}
       </div>
 
       {/* MODAL con Formulario de “Demo Gratis” */}

@@ -7,9 +7,9 @@ function Contacto() {
   return (
     <>
       <NavBar />
-      <div className="bg-gray-50 flex flex-col items-center px-4 py-8 md:px-16 pt-24 md:pt-36">
+      <div className="bg-gray-50 flex flex-col items-center px-4 py-8 md:px-16 pt-36 md:pt-36">
         {/* Encabezado principal */}
-        <h1 className="text-3xl md:text-4xl font-extrabold text-gray-800 mb-4">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-gray-800 mb-4 text-center">
           ¡Hablemos de tus ideas de software!
         </h1>
         <p className="text-lg md:text-xl text-gray-700 max-w-2xl text-center mb-8">

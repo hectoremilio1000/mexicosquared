@@ -159,7 +159,7 @@ export default function Home() {
       {espa ? (
         <>
           {/* Banner principal con Swiper */}
-          <MySwiper className="pt-4" />
+          <MySwiper />
 
           <div className="justify-center bg-black w-full section-info-banner">
             <div className="max-w-[90%] mx-auto flex-col md:flex-row flex overflow-hidden items-center px-6">
@@ -404,7 +404,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="no-underline !text-[#007bff]"
                   >
-                    DESCUBRE CÓMO LO LOGRAMOS
+                    CONTÁCTANOS
                   </a>
                 </Button>
               </div>

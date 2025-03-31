@@ -125,7 +125,7 @@ function ImpulsarVentar() {
   return (
     <>
       <NavBar />
-      <div className="bg-gray-50 flex flex-col items-center px-4 py-8 md:px-16 pt-24 md:pt-36">
+      <div className="bg-gray-50 flex flex-col items-center px-4 py-8 md:px-16 pt-36 md:pt-36">
         {/* Encabezado */}
         <div className="text-center max-w-4xl">
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
@@ -152,22 +152,22 @@ function ImpulsarVentar() {
               shape="round"
               size="large"
               className="
-      mt-2 !text-[#007bff]
-      !bg-[#FFD700]
-      
-      !border-none
-      !rounded-[14px]
-      !px-[1.8em]
-      !py-[1.2em]
-      !text-[1.42em]
-      !leading-[1.2em]
-      !font-bold
-      tracking-[0.025em]
-      transition-shadow
-      duration-300
-      shadow-[0_7px_80px_-12px_rgba(0,0,0,1)]
-      hover:shadow-[0_7px_80px_-12px_rgba(0,0,0,0.7)]
-    "
+                mt-2 !text-[#007bff]
+                !bg-[#FFD700]
+                
+                !border-none
+                !rounded-[14px]
+                !px-[1.8em]
+                !py-[1.6em]
+                !text-[1.42em]
+                !leading-[1.2em]
+                !font-bold
+                tracking-[0.025em]
+                transition-shadow
+                duration-300
+                shadow-[0_7px_80px_-12px_rgba(0,0,0,1)]
+                hover:shadow-[0_7px_80px_-12px_rgba(0,0,0,0.7)]
+              "
             >
               <a
                 href="https://wa.me/5215531491808?text=Hola%20quiero%20un%20software%20exitoso%20con%20growthsuite"
@@ -175,7 +175,7 @@ function ImpulsarVentar() {
                 rel="noopener noreferrer"
                 className="no-underline !text-[#007bff]"
               >
-                SOLICITA TU DEMO DE SOFTWARE GRATIS
+                SOLICITA TU DEMO <br /> DE SOFTWARE GRATIS
               </a>
             </Button>
           </div>
@@ -210,7 +210,7 @@ function ImpulsarVentar() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Razón 1 */}
               <div className="bg-gray-100 flex flex-col gap-3 items-start p-6 md:p-8">
-                <span className="inline-block p-4 rounded text-white bg-principal">
+                <span className="inline-block p-4 rounded text-white bg-primary">
                   1
                 </span>
                 <h5 className="text-[16px] md:text-[18px] font-bold">
@@ -222,7 +222,7 @@ function ImpulsarVentar() {
               </div>
               {/* Razón 2 */}
               <div className="bg-gray-100 flex flex-col gap-3 items-start p-6 md:p-8">
-                <span className="inline-block p-4 rounded text-white bg-principal">
+                <span className="inline-block p-4 rounded text-white bg-primary">
                   2
                 </span>
                 <h1 className="text-[16px] md:text-[18px] font-bold">
@@ -234,7 +234,7 @@ function ImpulsarVentar() {
               </div>
               {/* Razón 3 */}
               <div className="bg-gray-100 flex flex-col gap-3 items-start p-6 md:p-8">
-                <span className="inline-block p-4 rounded text-white bg-principal">
+                <span className="inline-block p-4 rounded text-white bg-primary">
                   3
                 </span>
                 <h1 className="text-[16px] md:text-[18px] font-bold">
@@ -268,7 +268,7 @@ function ImpulsarVentar() {
         </div>
 
         {/* CTA final */}
-        <div className="bg-gray-50 flex flex-col items-center px-4 py-2 md:px-16 pt-6 md:pt-12">
+        <div className="bg-gray-50 flex flex-col items-center py-2 md:px-16 pt-6 md:pt-12">
           <div className="text-center max-w-4xl">
             <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight text-center">
               {info[0].titulo4}
@@ -284,7 +284,7 @@ function ImpulsarVentar() {
             {/* Gradiente superpuesto */}
             <div className="absolute top-0 left-0 w-full h-full bg-opacity-75 bg-black"></div>
             {/* Contenido */}
-            <div className="relative z-20 flex flex-col justify-center items-center h-full p-8 text-white">
+            <div className="relative z-20 flex flex-col justify-center items-center h-full text-white">
               <div>
                 <div className="mb-8 text-center">
                   <p className="text-3xl md:text-4xl font-bold text-white">
@@ -303,22 +303,22 @@ function ImpulsarVentar() {
                     shape="round"
                     size="large"
                     className="
-                                          mt-2 !text-[#007bff]
-                                          !bg-[#FFD700]
-                                          
-                                          !border-none
-                                          !rounded-[14px]
-                                          !px-[1.8em]
-                                          !py-[1.2em]
-                                          !text-[1.42em]
-                                          !leading-[1.2em]
-                                          !font-bold
-                                          tracking-[0.025em]
-                                          transition-shadow
-                                          duration-300
-                                          shadow-[0_7px_80px_-12px_rgba(0,0,0,1)]
-                                          hover:shadow-[0_7px_80px_-12px_rgba(0,0,0,0.7)]
-                                        "
+                      mt-2 !text-[#007bff]
+                      !bg-[#FFD700]
+                      
+                      !border-none
+                      !rounded-[14px]
+                      !px-[1.8em]
+                      !py-[1.6em]
+                      !text-[1.42em]
+                      !leading-[1.2em]
+                      !font-bold
+                      tracking-[0.025em]
+                      transition-shadow
+                      duration-300
+                      shadow-[0_7px_80px_-12px_rgba(0,0,0,1)]
+                      hover:shadow-[0_7px_80px_-12px_rgba(0,0,0,0.7)]
+                    "
                   >
                     <a
                       href="https://wa.me/5215531491808?text=Hola%20quiero%20un%20software%20exitoso%20con%20growthsuite"
@@ -326,7 +326,7 @@ function ImpulsarVentar() {
                       rel="noopener noreferrer"
                       className="no-underline !text-[#007bff]"
                     >
-                      SOLICITA TU DEMO DE SOFTWARE GRATIS
+                      SOLICITA TU DEMO <br /> DE SOFTWARE GRATIS
                     </a>
                   </Button>
                 </div>

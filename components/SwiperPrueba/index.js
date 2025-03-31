@@ -85,7 +85,7 @@ const MySwiper = () => {
   };
 
   return (
-    <div className="mt-8">
+    <div>
       <div
         className={`${styles.sectionHero} ${isModalOpen ? styles.dimmed : ""}`}
       >
@@ -95,7 +95,7 @@ const MySwiper = () => {
           pagination={{ clickable: true }}
           autoplay={{ delay: 3500 }}
           loop
-          className="w-full h-[70vh] md:h-[90vh]"
+          className="w-full md:h-[90vh]"
         >
           {/* Slide 1 - Software a la medida */}
           <SwiperSlide>

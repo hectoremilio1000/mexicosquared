@@ -88,8 +88,7 @@ const CasosEstudio = () => {
           viewport={{ once: true }} // Solo ejecuta la animación una vez
           className="title2-tw text-center uppercase"
         >
-          Con la confianza de más de
-          <br /> 1,000+ EMPRESAS <br /> DEL MUNDO
+          Con la confianza de más de 1,000+ EMPRESAS <br /> DEL MUNDO
         </motion.h2>
       </div>
       <div className="w-[100%] max-w-[1085px] flex flex-col justify-center items-center">

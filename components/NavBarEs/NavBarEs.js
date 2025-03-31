@@ -64,7 +64,7 @@ function NavBar() {
             <Link href="/" className="logo ">
               <Image
                 src={logo}
-                width={250}
+                width={150}
                 alt="Impulso Restaurantero"
                 priority
               />

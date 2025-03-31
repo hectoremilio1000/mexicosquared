@@ -92,10 +92,10 @@ function Casosexito() {
   return (
     <>
       <NavBar />
-      <div className="flex flex-col items-center px-4 py-8 md:px-16 pt-24 md:pt-36">
+      <div className="flex flex-col items-center px-4 py-8 md:px-16 pt-36 md:pt-36">
         {/* Header */}
         <div className="text-center max-w-4xl">
-          <h1 className="text-2xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+          <h1 className="text-2xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight text-center">
             Casos de Éxito: Soluciones de Software para Impulsar tu Negocio
           </h1>
           <p className="text-gray-600 text-sm md:text-2xl">
@@ -118,7 +118,7 @@ function Casosexito() {
       !border-none
       !rounded-[14px]
       !px-[1.8em]
-      !py-[1.2em]
+      !py-[1.6em]
       !text-[1.42em]
       !leading-[1.2em]
       !font-bold
@@ -135,7 +135,7 @@ function Casosexito() {
                 rel="noopener noreferrer"
                 className="no-underline !text-[#007bff]"
               >
-                SOLICITA TU DEMO DE SOFTWARE GRATIS
+                SOLICITA TU DEMO <br /> DE SOFTWARE GRATIS
               </a>
             </Button>
           </div>
