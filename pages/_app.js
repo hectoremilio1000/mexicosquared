@@ -25,10 +25,7 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <>
       <AppContextProvider>
-        <LayoutFinal>
-          {/* <TikTokPixel pixelId={TIXTOK_PIXEL_ID} /> */}
-          <Component {...pageProps} />
-        </LayoutFinal>
+        <Component {...pageProps} />
       </AppContextProvider>
     </>
   );
