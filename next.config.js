@@ -1,9 +1,7 @@
 // @ts-check
-
 /** @type {import('next').NextConfig} */
-
 const nextConfig = {
-  output: "export",
+  reactStrictMode: true,
   transpilePackages: [
     "@mercadopago/sdk-react",
     "@ant-design",
@@ -43,7 +41,7 @@ const nextConfig = {
     "rc-util",
   ],
   images: {
-    unoptimized: true,
+    unoptimized: true, // ok si no usas optimización de next/image
   },
 };
 

@@ -54,7 +54,7 @@ export default function ListingCard({ item }) {
             Contactar
           </button>
           <Link
-            href={`/listing/${item.slug}`}
+            href={`/renta/${item.slug}`}
             className="ml-auto text-sm text-blue-700 underline"
           >
             Ver detalle
