@@ -2,25 +2,26 @@ import { FaInstagram, FaFacebookF, FaTiktok } from "react-icons/fa";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-30 bg-white border-b">
-      <div className="mx-auto max-w-7xl px-4 py-3 flex items-center gap-3">
+    <header className="sticky top-0 z-30 bg-white/90 backdrop-blur border-b">
+      <div className="mx-auto max-w-7xl px-4 h-14 flex items-center justify-between">
         {/* Marca (izquierda) */}
-        <div className="flex items-center gap-2">
-          <div className="h-7 w-7 rounded bg-blue-500" />
-          <span className="font-semibold">MexicoSquared</span>
+        <div className="flex items-center gap-2 min-w-0">
+          <div className="h-7 w-7 rounded bg-blue-500 shrink-0" />
+          <span className="font-semibold truncate">Gabana Real Estate</span>
         </div>
 
         {/* Acciones + Redes (derecha) */}
-        <nav className="ml-auto flex items-center gap-3">
-          <button className="px-3 py-1.5 rounded border text-sm">
+        <nav className="flex items-center gap-2 sm:gap-3 flex-nowrap">
+          {/* En móvil escondemos los botones para que no rompan el layout */}
+          <button className="hidden sm:inline-flex px-3 py-1.5 rounded border text-sm shrink-0">
             Publicar
           </button>
-          <button className="px-3 py-1.5 rounded bg-blue-600 text-white text-sm">
+          <button className="hidden sm:inline-flex px-3 py-1.5 rounded bg-blue-600 text-white text-sm shrink-0">
             Ingresar
           </button>
 
-          {/* Íconos al extremo derecho */}
-          <div className="flex items-center gap-2 pl-3 border-l">
+          {/* Íconos siempre visibles; separados con una línea */}
+          <div className="flex items-center gap-2 pl-3 border-l shrink-0">
             <a
               href="https://instagram.com/tuusuario"
               target="_blank"
