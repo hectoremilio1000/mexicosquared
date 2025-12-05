@@ -1,9 +1,11 @@
-import { listings } from "../../data/listings";
+// /Users/hectoremilio/Proyectos/nextjs/gabana_real_estate/pages/renta/[slug].js
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import { fetchPublicListingBySlug } from "../../lib/api";
 
 export default function ListingDetail({ item }) {
   if (!item) return <div className="p-6">No encontrado</div>;
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
@@ -21,7 +23,7 @@ export default function ListingDetail({ item }) {
         <p className="text-gray-700 mt-1">{item.address}</p>
         <p className="text-sm text-gray-500">{item.zone}</p>
         <div className="mt-4 flex flex-wrap gap-2">
-          {item.badges.map((b) => (
+          {(item.badges || []).map((b) => (
             <span key={b} className="border rounded px-2 py-1 text-sm">
               {b}
             </span>
@@ -35,6 +37,11 @@ export default function ListingDetail({ item }) {
 }
 
 export async function getServerSideProps({ params }) {
-  const item = listings.find((l) => l.slug === params.slug) || null;
-  return { props: { item } };
+  try {
+    const item = await fetchPublicListingBySlug(params.slug);
+    return { props: { item } };
+  } catch (err) {
+    console.error("Error cargando listing por slug:", err);
+    return { props: { item: null } };
+  }
 }
