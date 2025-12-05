@@ -13,9 +13,9 @@ export default function Header() {
         {/* Acciones + Redes (derecha) */}
         <nav className="flex items-center gap-2 sm:gap-3 flex-nowrap">
           {/* En móvil escondemos los botones para que no rompan el layout */}
-          <button className="hidden sm:inline-flex px-3 py-1.5 rounded border text-sm shrink-0">
+          {/* <button className="hidden sm:inline-flex px-3 py-1.5 rounded border text-sm shrink-0">
             Publicar
-          </button>
+          </button> */}
           <button className="hidden sm:inline-flex px-3 py-1.5 rounded bg-blue-600 text-white text-sm shrink-0">
             Ingresar
           </button>
