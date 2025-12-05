@@ -7,7 +7,7 @@ export default function Header() {
         {/* Marca (izquierda) */}
         <div className="flex items-center gap-2 min-w-0">
           <div className="h-7 w-7 rounded bg-blue-500 shrink-0" />
-          <span className="font-semibold truncate">Gabana Real Estate</span>
+          <span className="font-semibold truncate">Gabana Real Estate </span>
         </div>
 
         {/* Acciones + Redes (derecha) */}
