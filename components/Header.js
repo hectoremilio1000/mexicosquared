@@ -1,4 +1,5 @@
 import { FaInstagram, FaFacebookF, FaTiktok } from "react-icons/fa";
+import Link from "next/link";
 
 export default function Header() {
   return (
@@ -16,9 +17,12 @@ export default function Header() {
           {/* <button className="hidden sm:inline-flex px-3 py-1.5 rounded border text-sm shrink-0">
             Publicar
           </button> */}
-          <button className="hidden sm:inline-flex px-3 py-1.5 rounded bg-blue-600 text-white text-sm shrink-0">
+          <Link
+            href="https://gabanaadminfront-cidfnrwkw-hectoremilio1000-s-team.vercel.app/login"
+            className="hidden sm:inline-flex px-3 py-1.5 rounded bg-blue-600 text-white text-sm shrink-0"
+          >
             Ingresar
-          </button>
+          </Link>
 
           {/* Íconos siempre visibles; separados con una línea */}
           <div className="flex items-center gap-2 pl-3 border-l shrink-0">
