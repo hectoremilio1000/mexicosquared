@@ -1,7 +1,7 @@
 {
-  "name": "impulso-restaurantero",
+  "name": "mexicosquared",
   "version": "1.0.0",
-  "description": "Página de empresa impulso restaurantero",
+  "description": "Sitio publico de Gabana Real Estate",
   "private": true,
   "scripts": {
     "dev": "next dev",

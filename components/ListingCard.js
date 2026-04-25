@@ -1,6 +1,11 @@
 import Link from "next/link";
+import { getContactHref, siteConfig } from "../lib/siteConfig";
 
 export default function ListingCard({ item }) {
+  const contactHref = getContactHref(
+    `Hola, quiero informacion de la propiedad ${item.title || item.slug}`
+  );
+
   return (
     <article className="bg-white border rounded-lg overflow-hidden hover:shadow-sm transition">
       <div className="relative aspect-[16/9] bg-gray-100">
@@ -49,10 +54,24 @@ export default function ListingCard({ item }) {
         </div>
 
         <div className="mt-4 flex items-center gap-2">
-          <button className="px-3 py-2 border rounded text-sm">Llamar</button>
-          <button className="px-3 py-2 border rounded text-sm">
-            Contactar
-          </button>
+          {siteConfig.contactPhone && (
+            <a
+              href={`tel:${siteConfig.contactPhone}`}
+              className="px-3 py-2 border rounded text-sm"
+            >
+              Llamar
+            </a>
+          )}
+          {contactHref && (
+            <a
+              href={contactHref}
+              target={contactHref.startsWith("http") ? "_blank" : undefined}
+              rel={contactHref.startsWith("http") ? "noopener noreferrer" : undefined}
+              className="px-3 py-2 border rounded text-sm"
+            >
+              Contactar
+            </a>
+          )}
           <Link
             href={`/renta/${item.slug}`}
             className="ml-auto text-sm text-blue-700 underline"

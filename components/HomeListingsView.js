@@ -5,12 +5,17 @@ import FiltersBar from "./FiltersBar";
 import ListingGrid from "./ListingGrid";
 import Pagination from "./Pagination";
 
+const PAGE_SIZE = 9;
+
 export function HomeListingsView({ initialListings }) {
   const [query, setQuery] = useState("");
+  const [operation, setOperation] = useState("rent");
+  const [propertyType, setPropertyType] = useState("");
+  const [sort, setSort] = useState("recent");
+  const [page, setPage] = useState(1);
   const [filters, setFilters] = useState({
     beds: null,
     price: null,
-    street: null,
     zone: null,
     badge: null,
   });
@@ -73,6 +78,7 @@ export function HomeListingsView({ initialListings }) {
   const canonical = (token) => ALIAS[token] || token;
 
   const updateFilter = (key, value) => {
+    setPage(1);
     setFilters((prev) => ({
       ...prev,
       [key]: prev[key] === value ? null : value,
@@ -105,6 +111,14 @@ export function HomeListingsView({ initialListings }) {
         tokens.length === 0 ||
         tokens.every((t) => haystack.includes(canonical(t)));
 
+      const matchesOperation =
+        operation === "rent" ||
+        haystack.includes("venta") ||
+        haystack.includes("comprar");
+
+      const matchesPropertyType =
+        !propertyType || haystack.includes(canonical(propertyType));
+
       const matchesBeds =
         !filters.beds || (l.beds || "").includes(filters.beds);
 
@@ -112,9 +126,6 @@ export function HomeListingsView({ initialListings }) {
         !filters.price ||
         parseInt(String(l.priceLabel || "").replace(/\D/g, ""), 10) <=
           filters.price;
-
-      const matchesStreet =
-        !filters.street || haystack.includes(normalize(filters.street));
 
       const matchesZone =
         !filters.zone || haystack.includes(normalize(filters.zone));
@@ -128,21 +139,46 @@ export function HomeListingsView({ initialListings }) {
 
       return (
         matchesQuery &&
+        matchesOperation &&
+        matchesPropertyType &&
         matchesBeds &&
         matchesPrice &&
-        matchesStreet &&
         matchesZone &&
         matchesBadge
       );
     });
-  }, [query, filters, listings]);
+  }, [query, filters, listings, operation, propertyType]);
+
+  const sorted = useMemo(() => {
+    const toPrice = (listing) =>
+      parseInt(String(listing.priceLabel || "").replace(/\D/g, ""), 10) || 0;
+    const toSize = (listing) =>
+      parseInt(String(listing.size || "").replace(/\D/g, ""), 10) || 0;
+
+    return [...filtered].sort((a, b) => {
+      if (sort === "price-asc") return toPrice(a) - toPrice(b);
+      if (sort === "price-desc") return toPrice(b) - toPrice(a);
+      if (sort === "size-desc") return toSize(b) - toSize(a);
+      return 0;
+    });
+  }, [filtered, sort]);
+
+  const totalPages = Math.max(1, Math.ceil(sorted.length / PAGE_SIZE));
+  const currentPage = Math.min(page, totalPages);
+  const paginated = sorted.slice(
+    (currentPage - 1) * PAGE_SIZE,
+    currentPage * PAGE_SIZE
+  );
 
   const resetFilters = () => {
     setQuery("");
+    setOperation("rent");
+    setPropertyType("");
+    setSort("recent");
+    setPage(1);
     setFilters({
       beds: null,
       price: null,
-      street: null,
       zone: null,
       badge: null,
     });
@@ -151,17 +187,46 @@ export function HomeListingsView({ initialListings }) {
   return (
     <>
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-        <SearchBar value={query} onSearch={setQuery} />
+        <SearchBar
+          value={query}
+          operation={operation}
+          propertyType={propertyType}
+          onSearch={(value) => {
+            setPage(1);
+            setQuery(value);
+          }}
+          onOperationChange={(value) => {
+            setPage(1);
+            setOperation(value);
+          }}
+          onPropertyTypeChange={(value) => {
+            setPage(1);
+            setPropertyType(value);
+          }}
+        />
       </div>
 
-      <FiltersBar updateFilter={updateFilter} resetFilters={resetFilters} />
+      <FiltersBar
+        filters={filters}
+        sort={sort}
+        updateFilter={updateFilter}
+        resetFilters={resetFilters}
+        onSortChange={(value) => {
+          setPage(1);
+          setSort(value);
+        }}
+      />
 
       <div className="text-sm text-gray-600 mt-2">
-        {filtered.length.toLocaleString()} propiedades en renta - México
+        {sorted.length.toLocaleString()} propiedades en renta - México
       </div>
 
-      <ListingGrid items={filtered} />
-      <Pagination />
+      <ListingGrid items={paginated} />
+      <Pagination
+        page={currentPage}
+        pages={totalPages}
+        onPageChange={setPage}
+      />
     </>
   );
 }
