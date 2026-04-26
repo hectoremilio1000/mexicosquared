@@ -6,6 +6,10 @@ export default function ListingCard({ item }) {
   const contactHref = getContactHref(
     `Hola, quiero informacion de la propiedad ${item.title || item.slug}`
   );
+  const operationLabel = item.badges?.some((badge) => /renta/i.test(badge))
+    ? "Renta"
+    : "Venta";
+  const detailBasePath = operationLabel === "Renta" ? "renta" : "venta";
 
   return (
     <article className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
@@ -40,7 +44,7 @@ export default function ListingCard({ item }) {
       <div className="p-4">
         <div className="mb-2 flex items-center justify-between gap-2">
           <span className="rounded-full bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-700">
-            Venta
+            {operationLabel}
           </span>
           <span className="text-xs text-slate-500">ID {item.id}</span>
         </div>
@@ -84,7 +88,7 @@ export default function ListingCard({ item }) {
             </a>
           )}
           <Link
-            href={`/renta/${item.slug}`}
+            href={`/${detailBasePath}/${item.slug}`}
             className="ml-auto rounded bg-slate-950 px-3 py-2 text-sm font-semibold text-white hover:bg-slate-800"
           >
             Ver detalle
