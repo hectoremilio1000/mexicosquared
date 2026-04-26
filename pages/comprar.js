@@ -1,39 +1,35 @@
-// /Users/hectoremilio/Proyectos/nextjs/gabana_real_estate/pages/index.js
+import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { HomeListingsView } from "../components/HomeListingsView";
 import { fetchPublicListings } from "../lib/api";
-import Head from "next/head";
 import { siteConfig } from "../lib/siteConfig";
 
-export default function Home({ initialListings }) {
-  const pageTitle = `${siteConfig.brandName} | Propiedades en Mexico`;
-
+export default function Comprar({ initialListings }) {
   return (
     <div className="min-h-screen flex flex-col bg-slate-50">
       <Head>
-        <title>{pageTitle}</title>
+        <title>Comprar propiedades | {siteConfig.brandName}</title>
         <meta
           name="description"
-          content="Busca propiedades en renta y venta con Gabana Real Estate."
+          content="Explora propiedades en venta verificadas por Gabana Real Estate."
         />
       </Head>
       <Header />
       <main className="mx-auto w-full max-w-7xl space-y-8 px-0 pb-10 md:px-4 md:py-6">
-        <HomeListingsView initialListings={initialListings} />
+        <HomeListingsView initialListings={initialListings} defaultOperation="sale" />
       </main>
       <Footer />
     </div>
   );
 }
 
-// SSR: cargar listings desde Adonis
 export async function getServerSideProps() {
   try {
     const initialListings = await fetchPublicListings();
     return { props: { initialListings } };
   } catch (err) {
-    console.error("Error en getServerSideProps listings:", err);
+    console.error("Error en getServerSideProps comprar:", err);
     return { props: { initialListings: [] } };
   }
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getContactHref, siteConfig } from "../lib/siteConfig";
+import { FiCamera, FiHeart, FiMapPin, FiShare2 } from "react-icons/fi";
 
 export default function ListingCard({ item }) {
   const contactHref = getContactHref(
@@ -7,49 +8,59 @@ export default function ListingCard({ item }) {
   );
 
   return (
-    <article className="bg-white border rounded-lg overflow-hidden hover:shadow-sm transition">
-      <div className="relative aspect-[16/9] bg-gray-100">
+    <article className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+      <div className="relative aspect-[4/3] bg-slate-100">
         <img
           src={item.image}
           alt={item.title}
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute left-2 bottom-2 flex gap-1">
-          {item.highlights?.slice(0, 2).map((h) => (
+        <div className="absolute left-3 top-3 flex gap-1">
+          {item.isPremier && (
             <span
-              key={h}
-              className="bg-blue-700 text-white text-xs px-2 py-0.5 rounded"
+              className="rounded-full bg-slate-950/90 px-2.5 py-1 text-xs font-semibold text-white"
             >
-              {h}
+              Exclusiva
             </span>
-          ))}
+          )}
         </div>
-        <div className="absolute right-2 top-2 bg-white/90 rounded-full p-1 text-xs">
-          {item.mediaCount}
+        <div className="absolute right-3 top-3 flex gap-2">
+          <button className="grid h-8 w-8 place-items-center rounded-full bg-white/95 text-slate-800 shadow">
+            <FiHeart />
+          </button>
+          <button className="grid h-8 w-8 place-items-center rounded-full bg-white/95 text-slate-800 shadow">
+            <FiShare2 />
+          </button>
+        </div>
+        <div className="absolute bottom-3 right-3 inline-flex items-center gap-1 rounded-full bg-white/95 px-2 py-1 text-xs font-semibold text-slate-800 shadow">
+          <FiCamera /> {item.mediaCount || item.photos?.length || 1}
         </div>
       </div>
 
       <div className="p-4">
-        {item.isPremier && (
-          <div className="mb-2 text-xs inline-flex items-center gap-1 bg-gray-900 text-white px-2 py-0.5 rounded">
-            Premier
-          </div>
-        )}
-        <h3 className="text-gray-900 font-semibold">{item.priceLabel}</h3>
-        <p className="text-sm text-gray-700 mt-1">{item.address}</p>
-        <p className="text-xs text-gray-500">{item.zone}</p>
+        <div className="mb-2 flex items-center justify-between gap-2">
+          <span className="rounded-full bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-700">
+            Venta
+          </span>
+          <span className="text-xs text-slate-500">ID {item.id}</span>
+        </div>
+        <h3 className="text-xl font-semibold text-slate-950">{item.priceLabel}</h3>
+        <p className="mt-1 flex items-center gap-1 text-sm text-slate-700">
+          <FiMapPin className="shrink-0" /> {item.address}
+        </p>
+        <p className="text-xs text-slate-500">{item.zone}</p>
 
-        <div className="flex flex-wrap gap-2 mt-3">
+        <div className="mt-3 flex flex-wrap gap-2">
           {item.badges?.map((b) => (
-            <span key={b} className="text-xs px-2 py-1 border rounded">
+            <span key={b} className="rounded border border-slate-200 px-2 py-1 text-xs text-slate-600">
               {b}
             </span>
           ))}
         </div>
 
-        <div className="flex items-center gap-2 text-xs text-gray-500 mt-2">
+        <div className="mt-3 flex items-center gap-2 text-sm font-medium text-slate-700">
           <span>{item.size}</span>
-          <span>•</span>
+          <span className="text-slate-300">•</span>
           <span>{item.beds}</span>
         </div>
 
@@ -57,7 +68,7 @@ export default function ListingCard({ item }) {
           {siteConfig.contactPhone && (
             <a
               href={`tel:${siteConfig.contactPhone}`}
-              className="px-3 py-2 border rounded text-sm"
+              className="rounded border border-slate-300 px-3 py-2 text-sm font-medium"
             >
               Llamar
             </a>
@@ -67,14 +78,14 @@ export default function ListingCard({ item }) {
               href={contactHref}
               target={contactHref.startsWith("http") ? "_blank" : undefined}
               rel={contactHref.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="px-3 py-2 border rounded text-sm"
+              className="rounded border border-slate-300 px-3 py-2 text-sm font-medium"
             >
               Contactar
             </a>
           )}
           <Link
             href={`/renta/${item.slug}`}
-            className="ml-auto text-sm text-blue-700 underline"
+            className="ml-auto rounded bg-slate-950 px-3 py-2 text-sm font-semibold text-white hover:bg-slate-800"
           >
             Ver detalle
           </Link>

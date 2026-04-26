@@ -1,8 +1,8 @@
 const filterButtons = [
-  { label: "1-2 Recámaras", key: "beds", value: "1-2 rec." },
+  { label: "4+ recámaras", key: "beds", value: "4 rec." },
   { label: "Hasta 10M", key: "price", value: 10000000 },
-  { label: "Polanco", key: "zone", value: "Polanco" },
-  { label: "Gimnasio", key: "badge", value: "Gimnasio" },
+  { label: "Casa", key: "badge", value: "Casa" },
+  { label: "Fraccionamiento", key: "badge", value: "Fraccionamiento privado" },
 ];
 
 export default function FiltersBar({
@@ -13,9 +13,9 @@ export default function FiltersBar({
   onSortChange,
 }) {
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap items-center gap-2">
       <button
-        className="px-3 py-1.5 border rounded text-sm bg-white"
+        className="rounded border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 hover:border-slate-950"
         onClick={resetFilters}
       >
         Todo
@@ -26,8 +26,10 @@ export default function FiltersBar({
         return (
           <button
             key={`${button.key}-${button.label}`}
-            className={`px-3 py-1.5 border rounded text-sm ${
-              active ? "bg-blue-600 text-white border-blue-600" : "bg-white"
+            className={`rounded border px-3 py-2 text-sm font-medium ${
+              active
+                ? "border-slate-950 bg-slate-950 text-white"
+                : "border-slate-300 bg-white text-slate-700 hover:border-slate-950"
             }`}
             onClick={() => updateFilter(button.key, button.value)}
           >
@@ -36,13 +38,13 @@ export default function FiltersBar({
         );
       })}
 
-      <div className="ml-auto flex items-center gap-2 text-sm min-w-44">
+      <div className="ml-auto flex min-w-44 items-center gap-2 text-sm">
         <label htmlFor="sort-listings" className="text-gray-500">
           Ordenar
         </label>
         <select
           id="sort-listings"
-          className="border rounded px-2 py-1.5 bg-white"
+          className="rounded border border-slate-300 bg-white px-2 py-2 text-slate-700"
           value={sort}
           onChange={(e) => onSortChange?.(e.target.value)}
         >
