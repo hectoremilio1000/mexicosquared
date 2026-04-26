@@ -1,42 +1,124 @@
-const filterButtons = [
-  { label: "4+ recámaras", key: "beds", value: "4 rec." },
-  { label: "Hasta 10M", key: "price", value: 10000000 },
-  { label: "Casa", key: "badge", value: "Casa" },
-  { label: "Fraccionamiento", key: "badge", value: "Fraccionamiento privado" },
+// Sprint 1 — FiltersBar consume los nuevos query params del backend.
+//
+// Antes: chips hardcodeados ("4+ recámaras", "Hasta 10M") con filtrado
+// en cliente sobre el array completo.
+//
+// Ahora: controles estructurados que mandan beds_min, max_price, state,
+// is_featured y sort directamente al endpoint /api/listings.
+
+const BEDS_OPTIONS = [
+  { value: null, label: "Todas" },
+  { value: 1, label: "1+" },
+  { value: 2, label: "2+" },
+  { value: 3, label: "3+" },
+  { value: 4, label: "4+" },
+];
+
+const PRICE_PRESETS = [
+  { value: null, label: "Sin tope" },
+  { value: 3000000, label: "Hasta $3M" },
+  { value: 6000000, label: "Hasta $6M" },
+  { value: 10000000, label: "Hasta $10M" },
+  { value: 25000000, label: "Hasta $25M" },
+];
+
+const SORT_OPTIONS = [
+  { value: "created_at:desc", label: "Recientes" },
+  { value: "price:asc", label: "Menor precio" },
+  { value: "price:desc", label: "Mayor precio" },
+  { value: "size:desc", label: "Mayor superficie" },
 ];
 
 export default function FiltersBar({
   filters,
+  states = [],
   sort,
-  updateFilter,
-  resetFilters,
+  onFilterChange,
   onSortChange,
+  onReset,
 }) {
+  const setField = (key, value) => onFilterChange?.({ ...filters, [key]: value });
+
   return (
     <div className="flex flex-wrap items-center gap-2">
       <button
         className="rounded border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 hover:border-slate-950"
-        onClick={resetFilters}
+        onClick={onReset}
+        type="button"
       >
-        Todo
+        Limpiar
       </button>
 
-      {filterButtons.map((button) => {
-        const active = filters?.[button.key] === button.value;
-        return (
-          <button
-            key={`${button.key}-${button.label}`}
-            className={`rounded border px-3 py-2 text-sm font-medium ${
-              active
-                ? "border-slate-950 bg-slate-950 text-white"
-                : "border-slate-300 bg-white text-slate-700 hover:border-slate-950"
-            }`}
-            onClick={() => updateFilter(button.key, button.value)}
-          >
-            {button.label}
-          </button>
-        );
-      })}
+      {/* Recámaras */}
+      <div className="flex items-center gap-1 rounded border border-slate-300 bg-white px-2 py-1">
+        <span className="text-xs text-slate-500">Recámaras</span>
+        {BEDS_OPTIONS.map((opt) => {
+          const active = filters.beds_min === opt.value;
+          return (
+            <button
+              key={opt.label}
+              type="button"
+              onClick={() => setField("beds_min", opt.value)}
+              className={`rounded px-2 py-1 text-xs font-medium ${
+                active ? "bg-slate-950 text-white" : "text-slate-600"
+              }`}
+            >
+              {opt.label}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Precio máximo */}
+      <select
+        className="h-9 rounded border border-slate-300 bg-white px-2 text-sm font-medium text-slate-700"
+        value={filters.max_price ?? ""}
+        onChange={(e) =>
+          setField(
+            "max_price",
+            e.target.value === "" ? null : Number(e.target.value)
+          )
+        }
+        aria-label="Precio máximo"
+      >
+        {PRICE_PRESETS.map((opt) => (
+          <option key={opt.label} value={opt.value ?? ""}>
+            {opt.label}
+          </option>
+        ))}
+      </select>
+
+      {/* Estado */}
+      {states.length > 0 && (
+        <select
+          className="h-9 rounded border border-slate-300 bg-white px-2 text-sm font-medium text-slate-700"
+          value={filters.state ?? ""}
+          onChange={(e) =>
+            setField("state", e.target.value === "" ? null : e.target.value)
+          }
+          aria-label="Estado"
+        >
+          <option value="">Todos los estados</option>
+          {states.map((s) => (
+            <option key={s.id} value={s.name}>
+              {s.name}
+            </option>
+          ))}
+        </select>
+      )}
+
+      {/* Destacados */}
+      <button
+        type="button"
+        className={`rounded border px-3 py-2 text-sm font-medium ${
+          filters.is_featured
+            ? "border-amber-500 bg-amber-50 text-amber-700"
+            : "border-slate-300 bg-white text-slate-700"
+        }`}
+        onClick={() => setField("is_featured", !filters.is_featured)}
+      >
+        Destacados ★
+      </button>
 
       <div className="ml-auto flex min-w-44 items-center gap-2 text-sm">
         <label htmlFor="sort-listings" className="text-gray-500">
@@ -48,10 +130,11 @@ export default function FiltersBar({
           value={sort}
           onChange={(e) => onSortChange?.(e.target.value)}
         >
-          <option value="recent">Recientes</option>
-          <option value="price-asc">Menor precio</option>
-          <option value="price-desc">Mayor precio</option>
-          <option value="size-desc">Mayor superficie</option>
+          {SORT_OPTIONS.map((opt) => (
+            <option key={opt.value} value={opt.value}>
+              {opt.label}
+            </option>
+          ))}
         </select>
       </div>
     </div>
