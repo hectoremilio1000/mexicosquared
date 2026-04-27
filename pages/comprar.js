@@ -1,21 +1,18 @@
-// /Users/hectoremilio/Proyectos/nextjs/gabana_real_estate/pages/index.js
+import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { HomeListingsView } from "../components/HomeListingsView";
 import { fetchPublicListings } from "../lib/api";
-import Head from "next/head";
 import { siteConfig } from "../lib/siteConfig";
 
-export default function Home({ initialResponse }) {
-  const pageTitle = `${siteConfig.brandName} | El MLS donde están los agentes de México`;
-
+export default function Comprar({ initialResponse }) {
   return (
     <div className="min-h-screen flex flex-col bg-slate-50">
       <Head>
-        <title>{pageTitle}</title>
+        <title>Comprar propiedades | {siteConfig.brandName}</title>
         <meta
           name="description"
-          content="Encuentra propiedades en venta y renta con agentes verificados en toda la república mexicana."
+          content="Explora propiedades en venta verificadas por agentes de Gabana en toda la república mexicana."
         />
       </Head>
       <Header />
@@ -30,8 +27,6 @@ export default function Home({ initialResponse }) {
   );
 }
 
-// SSR: cargamos la primera página de venta. El resto se filtra en cliente
-// vía /api/listings con los nuevos query params (Sprint 1, Gap #2).
 export async function getServerSideProps() {
   try {
     const initialResponse = await fetchPublicListings({
@@ -41,7 +36,7 @@ export async function getServerSideProps() {
     });
     return { props: { initialResponse } };
   } catch (err) {
-    console.error("Error en getServerSideProps listings:", err);
+    console.error("Error en getServerSideProps comprar:", err);
     return {
       props: {
         initialResponse: {

@@ -1,4 +1,4 @@
-// /Users/hectoremilio/Proyectos/nextjs/gabana_real_estate/pages/renta/[slug].js
+// Public detail page for listings marked as sale.
 import { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
@@ -11,6 +11,7 @@ import { getContactHref, siteConfig } from "../../lib/siteConfig";
 import { buildListingJsonLd, jsonLdToScript } from "../../lib/schemaOrg";
 
 export default function ListingDetail({ item }) {
+  // Sprint 3 — Lightbox state (debe estar antes del early return).
   const [lightboxIndex, setLightboxIndex] = useState(-1);
   const openLightbox = (i) => setLightboxIndex(i);
 
@@ -24,7 +25,7 @@ export default function ListingDetail({ item }) {
     ? `https://www.google.com/maps/search/?api=1&query=${item.coords.lat},${item.coords.lng}`
     : "";
   const pageTitle = `${item.title} | ${siteConfig.brandName}`;
-  const jsonLd = buildListingJsonLd(item, item.operationType || "renta_larga");
+  const jsonLd = buildListingJsonLd(item, item.operationType || "venta");
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
@@ -236,6 +237,7 @@ export default function ListingDetail({ item }) {
           </aside>
         </div>
 
+        {/* Sprint 2 — Gap #5: bloque grande de contacto (mobile + accesible por anchor) */}
         <section
           id="solicitar-informacion"
           className="mt-10 lg:hidden"
@@ -269,6 +271,10 @@ export default function ListingDetail({ item }) {
   );
 }
 
+/**
+ * El DTO público devuelve `id: "listing-N"` (string) por compat. El backend
+ * espera un entero. Extraemos el número al vuelo.
+ */
 function listingIdNumeric(id) {
   if (typeof id === "number") return id;
   if (typeof id === "string") {

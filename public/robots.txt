@@ -1,9 +1,11 @@
-# *
+# Sprint 7 — robots.txt para Gabana
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /auth/callback
 
-# Host
-Host: https://lalloronacantina.com
+Host: https://gabanarealstate.com.mx
 
-# Sitemaps
-Sitemap: https://lalloronacantina.com/sitemap.xml
+Sitemap: https://gabanarealstate.com.mx/sitemap.xml
+Sitemap: https://api.gabanarealstate.com.mx/sitemap-dynamic.xml
