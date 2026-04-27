@@ -41,7 +41,48 @@ const nextConfig = {
     "rc-util",
   ],
   images: {
-    unoptimized: true, // ok si no usas optimización de next/image
+    // Sprint 3 — Gap #15: activamos next/image con remote patterns para el
+    // backend AdonisJS (proxy /api/media/:token), Railway (deploy backend),
+    // S3 público y picsum.photos (seed dev).
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "gabanabackadonis-production.up.railway.app",
+        pathname: "/api/media/**",
+      },
+      {
+        protocol: "https",
+        hostname: "api.gabanarealstate.com.mx",
+        pathname: "/api/media/**",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
+        pathname: "/api/media/**",
+      },
+      {
+        protocol: "https",
+        hostname: "picsum.photos",
+      },
+      {
+        protocol: "https",
+        hostname: "fastly.picsum.photos",
+      },
+      {
+        protocol: "https",
+        hostname: "*.gabanarealstate.com.mx",
+      },
+      {
+        protocol: "https",
+        hostname: "*.amazonaws.com",
+      },
+      {
+        protocol: "https",
+        hostname: "*.r2.cloudflarestorage.com",
+      },
+    ],
+    deviceSizes: [320, 480, 640, 800, 1024, 1280, 1600],
+    imageSizes: [64, 128, 256, 384, 512],
   },
 };
 

@@ -1,0 +1,26 @@
+name: CI — mexicosquared
+
+on:
+  push:
+    branches: [main, "hector_dev/**"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      NEXT_PUBLIC_API_BASE_URL: https://api.gabanarealstate.com.mx/api
+      NEXT_PUBLIC_SITE_URL: https://gabanarealstate.com.mx
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build

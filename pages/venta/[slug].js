@@ -1,13 +1,20 @@
 // Public detail page for listings marked as sale.
+import { useState } from "react";
 import Head from "next/head";
+import Image from "next/image";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import LeadForm from "../../components/LeadForm";
+import Lightbox from "../../components/Lightbox";
 import { fetchPublicListingBySlug } from "../../lib/api";
 import { getContactHref, siteConfig } from "../../lib/siteConfig";
 import { buildListingJsonLd, jsonLdToScript } from "../../lib/schemaOrg";
 
 export default function ListingDetail({ item }) {
+  // Sprint 3 — Lightbox state (debe estar antes del early return).
+  const [lightboxIndex, setLightboxIndex] = useState(-1);
+  const openLightbox = (i) => setLightboxIndex(i);
+
   if (!item) return <div className="p-6">No encontrado</div>;
 
   const photos = item.photos?.length ? item.photos : [item.image].filter(Boolean);
@@ -50,39 +57,63 @@ export default function ListingDetail({ item }) {
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
           <section>
             <div className="grid gap-2 overflow-hidden rounded-xl md:grid-cols-[2fr_1fr]">
-              <div className="aspect-[16/10] bg-gray-100 md:aspect-auto">
-                <img
-                  src={photos[0]}
-                  alt={item.title}
-                  className="h-full w-full object-cover"
-                />
-              </div>
+              <button
+                type="button"
+                onClick={() => openLightbox(0)}
+                className="relative aspect-[16/10] bg-gray-100 md:aspect-auto cursor-zoom-in"
+                aria-label={`Ver galería de ${item.title}`}
+              >
+                {photos[0] && (
+                  <Image
+                    src={photos[0]}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 66vw"
+                    priority
+                    className="object-cover"
+                  />
+                )}
+              </button>
               <div className="grid grid-cols-2 gap-2 md:grid-cols-1">
                 {photos.slice(1, 3).map((photo, index) => (
-                  <div key={photo} className="relative min-h-40 bg-gray-100">
-                    <img
+                  <button
+                    key={photo}
+                    type="button"
+                    onClick={() => openLightbox(index + 1)}
+                    className="relative min-h-40 bg-gray-100 cursor-zoom-in"
+                  >
+                    <Image
                       src={photo}
                       alt={`${item.title} foto ${index + 2}`}
-                      className="h-full w-full object-cover"
+                      fill
+                      sizes="(max-width: 768px) 50vw, 33vw"
+                      className="object-cover"
                     />
                     {index === 1 && photos.length > 3 && (
                       <div className="absolute inset-0 grid place-items-center bg-slate-950/50 text-sm font-semibold text-white">
                         Ver {photos.length} fotos
                       </div>
                     )}
-                  </div>
+                  </button>
                 ))}
               </div>
             </div>
             <div className="mt-3 flex flex-wrap gap-2">
               {photos.slice(3, 7).map((photo, index) => (
-                <div key={photo} className="h-20 w-28 overflow-hidden rounded bg-slate-100">
-                  <img
+                <button
+                  key={photo}
+                  type="button"
+                  onClick={() => openLightbox(index + 3)}
+                  className="relative h-20 w-28 overflow-hidden rounded bg-slate-100 cursor-zoom-in"
+                >
+                  <Image
                     src={photo}
                     alt={`${item.title} miniatura ${index + 4}`}
-                    className="h-full w-full object-cover"
+                    fill
+                    sizes="112px"
+                    className="object-cover"
                   />
-                </div>
+                </button>
               ))}
             </div>
             <div className="hidden aspect-[16/9] bg-gray-100 rounded overflow-hidden">
@@ -228,6 +259,14 @@ export default function ListingDetail({ item }) {
         </section>
       </main>
       <Footer />
+
+      <Lightbox
+        open={lightboxIndex >= 0}
+        photos={photos}
+        startIndex={Math.max(0, lightboxIndex)}
+        alt={item.title}
+        onClose={() => setLightboxIndex(-1)}
+      />
     </div>
   );
 }

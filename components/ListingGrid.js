@@ -12,8 +12,9 @@ export default function ListingGrid({ items }) {
 
   return (
     <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-2">
-      {items.map((it) => (
-        <ListingCard key={it.id} item={it} />
+      {items.map((it, idx) => (
+        // Sprint 3 — Gap #15: las primeras 4 cards LCP-priority.
+        <ListingCard key={it.id} item={it} priority={idx < 4} />
       ))}
     </div>
   );

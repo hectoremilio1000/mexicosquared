@@ -1,11 +1,52 @@
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { getContactHref, siteConfig } from "../lib/siteConfig";
+import {
+  getPublicSessionToken,
+  addFavorite,
+  removeFavorite,
+} from "../lib/publicAuth";
+import MagicLinkModal from "./MagicLinkModal";
 import { FiCamera, FiHeart, FiMapPin, FiShare2 } from "react-icons/fi";
 
-export default function ListingCard({ item }) {
+/**
+ * Sprint 3 — Gap #15: card con next/image responsive.
+ * Sprint 6 — Gap #12: corazón funcional con auth pública (magic link).
+ *
+ * Las primeras 4 cards se cargan con priority (LCP). El resto lazy.
+ */
+export default function ListingCard({ item, priority = false }) {
   const contactHref = getContactHref(
     `Hola, quiero informacion de la propiedad ${item.title || item.slug}`
   );
+  const listingIdNumeric = listingNumericId(item.id);
+  const [favorited, setFavorited] = useState(Boolean(item.isFavorite));
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    setFavorited(Boolean(item.isFavorite));
+  }, [item.isFavorite]);
+
+  async function handleHeart(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!getPublicSessionToken()) {
+      setShowModal(true);
+      return;
+    }
+    try {
+      if (favorited) {
+        await removeFavorite(listingIdNumeric);
+        setFavorited(false);
+      } else {
+        await addFavorite(listingIdNumeric);
+        setFavorited(true);
+      }
+    } catch {
+      // silencioso — UI no cambia si falla
+    }
+  }
   const operationLabel = item.badges?.some((badge) => /renta/i.test(badge))
     ? "Renta"
     : "Venta";
@@ -14,11 +55,16 @@ export default function ListingCard({ item }) {
   return (
     <article className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
       <div className="relative aspect-[4/3] bg-slate-100">
-        <img
-          src={item.image}
-          alt={item.title}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+        {item.image && (
+          <Image
+            src={item.image}
+            alt={item.title || ""}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 400px"
+            priority={priority}
+            className="object-cover"
+          />
+        )}
         <div className="absolute left-3 top-3 flex gap-1">
           {item.isPremier && (
             <span
@@ -29,10 +75,23 @@ export default function ListingCard({ item }) {
           )}
         </div>
         <div className="absolute right-3 top-3 flex gap-2">
-          <button className="grid h-8 w-8 place-items-center rounded-full bg-white/95 text-slate-800 shadow">
-            <FiHeart />
+          <button
+            type="button"
+            onClick={handleHeart}
+            aria-label={favorited ? "Quitar de favoritos" : "Guardar como favorito"}
+            className={`grid h-8 w-8 place-items-center rounded-full shadow ${
+              favorited
+                ? "bg-red-50 text-red-600"
+                : "bg-white/95 text-slate-800"
+            }`}
+          >
+            <FiHeart fill={favorited ? "currentColor" : "none"} />
           </button>
-          <button className="grid h-8 w-8 place-items-center rounded-full bg-white/95 text-slate-800 shadow">
+          <button
+            type="button"
+            aria-label="Compartir"
+            className="grid h-8 w-8 place-items-center rounded-full bg-white/95 text-slate-800 shadow"
+          >
             <FiShare2 />
           </button>
         </div>
@@ -95,6 +154,21 @@ export default function ListingCard({ item }) {
           </Link>
         </div>
       </div>
+
+      <MagicLinkModal
+        open={showModal}
+        onClose={() => setShowModal(false)}
+        intent="save"
+      />
     </article>
   );
+}
+
+function listingNumericId(id) {
+  if (typeof id === "number") return id;
+  if (typeof id === "string") {
+    const m = id.match(/(\d+)/);
+    if (m) return Number(m[1]);
+  }
+  return null;
 }
