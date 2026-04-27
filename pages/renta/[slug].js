@@ -2,8 +2,10 @@
 import Head from "next/head";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import LeadForm from "../../components/LeadForm";
 import { fetchPublicListingBySlug } from "../../lib/api";
 import { getContactHref, siteConfig } from "../../lib/siteConfig";
+import { buildListingJsonLd, jsonLdToScript } from "../../lib/schemaOrg";
 
 export default function ListingDetail({ item }) {
   if (!item) return <div className="p-6">No encontrado</div>;
@@ -16,6 +18,7 @@ export default function ListingDetail({ item }) {
     ? `https://www.google.com/maps/search/?api=1&query=${item.coords.lat},${item.coords.lng}`
     : "";
   const pageTitle = `${item.title} | ${siteConfig.brandName}`;
+  const jsonLd = buildListingJsonLd(item, item.operationType || "renta_larga");
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
@@ -28,6 +31,12 @@ export default function ListingDetail({ item }) {
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={item.summary || item.address} />
         {item.image && <meta property="og:image" content={item.image} />}
+        {jsonLd && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: jsonLdToScript(jsonLd) }}
+          />
+        )}
       </Head>
       <Header />
       <main className="mx-auto w-full max-w-7xl px-4 py-6">
@@ -149,11 +158,18 @@ export default function ListingDetail({ item }) {
             </p>
             <p className="text-sm text-gray-500">Precio</p>
             <p className="text-2xl font-semibold">{item.priceLabel}</p>
-            <p className="mt-3 text-sm text-gray-600">
-              Solicita informacion, disponibilidad o una visita para esta
-              propiedad.
-            </p>
-            <div className="mt-5 flex flex-col gap-2">
+
+            {/* Sprint 2 — Gap #5: form de contacto embebido (desktop) */}
+            <div className="mt-5 hidden lg:block">
+              <LeadForm
+                listingId={listingIdNumeric(item.id)}
+                listingTitle={item.title}
+                variant="embedded"
+              />
+            </div>
+
+            {/* Mobile/tablet: CTAs rápidas + scroll al form */}
+            <div className="mt-5 flex flex-col gap-2 lg:hidden">
               {siteConfig.contactPhone && (
                 <a
                   href={`tel:${siteConfig.contactPhone}`}
@@ -173,31 +189,55 @@ export default function ListingDetail({ item }) {
                   }
                   className="rounded bg-blue-700 px-4 py-2 text-center font-semibold text-white hover:bg-blue-800"
                 >
-                  Contactar
+                  WhatsApp / Mensaje
                 </a>
               )}
-              {!contactHref && (
-                <a
-                  href="/#contacto"
-                  className="rounded bg-blue-700 px-4 py-2 text-center font-semibold text-white hover:bg-blue-800"
-                >
-                  Solicitar información
-                </a>
-              )}
-              <a href="/" className="rounded border px-4 py-2 text-center">
-                Ver mas propiedades
+              <a
+                href="#solicitar-informacion"
+                className="rounded border border-blue-600 px-4 py-2 text-center font-semibold text-blue-700"
+              >
+                Solicitar información
               </a>
             </div>
+
             <div className="mt-5 rounded bg-slate-50 p-3 text-xs leading-5 text-slate-600">
-              ID {item.id}. Inventario publicado desde Gabana Admin y conectado
-              al backend en Railway.
+              ID {item.id}. Inventario publicado desde Gabana Admin.
             </div>
           </aside>
         </div>
+
+        <section
+          id="solicitar-informacion"
+          className="mt-10 lg:hidden"
+          aria-label="Form de contacto"
+        >
+          <h2 className="text-lg font-semibold text-slate-900">
+            Solicitar información
+          </h2>
+          <p className="mt-1 text-sm text-slate-600">
+            Te contactará un agente verificado de Gabana en menos de 24 horas.
+          </p>
+          <div className="mt-3">
+            <LeadForm
+              listingId={listingIdNumeric(item.id)}
+              listingTitle={item.title}
+              variant="embedded"
+            />
+          </div>
+        </section>
       </main>
       <Footer />
     </div>
   );
+}
+
+function listingIdNumeric(id) {
+  if (typeof id === "number") return id;
+  if (typeof id === "string") {
+    const match = id.match(/(\d+)/);
+    if (match) return Number(match[1]);
+  }
+  return null;
 }
 
 export async function getServerSideProps({ params }) {
