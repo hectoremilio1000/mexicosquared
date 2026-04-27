@@ -5,6 +5,12 @@ export default function Document() {
   return (
     <Html>
       <Head>
+        {/* Favicon Gabana — círculo negro con G blanca */}
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/icon.svg" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#0F172A" />
+
         <link
           href="https://fonts.googleapis.com/css2?family=Rubik:wght@900&display=swap"
           rel="stylesheet"

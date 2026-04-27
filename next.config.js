@@ -80,6 +80,15 @@ const nextConfig = {
         protocol: "https",
         hostname: "*.r2.cloudflarestorage.com",
       },
+      // Sprint 3 demo: fotos Unsplash del seeder Puerto Escondido + Oaxaca.
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "source.unsplash.com",
+      },
     ],
     deviceSizes: [320, 480, 640, 800, 1024, 1280, 1600],
     imageSizes: [64, 128, 256, 384, 512],
