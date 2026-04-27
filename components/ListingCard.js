@@ -66,7 +66,7 @@ export default function ListingCard({ item, priority = false }) {
           />
         )}
         <div className="absolute left-3 top-3 flex gap-1">
-          {item.isPremier && (
+          {Boolean(item.isPremier) && (
             <span
               className="rounded-full bg-slate-950/90 px-2.5 py-1 text-xs font-semibold text-white"
             >
