@@ -30,14 +30,15 @@ const SORT_OPTIONS = [
 ];
 
 export default function FiltersBar({
-  filters,
+  filters = {},
   states = [],
   sort,
   onFilterChange,
   onSortChange,
   onReset,
 }) {
-  const setField = (key, value) => onFilterChange?.({ ...filters, [key]: value });
+  const safeFilters = filters || {};
+  const setField = (key, value) => onFilterChange?.({ ...safeFilters, [key]: value });
 
   return (
     <div className="flex flex-wrap items-center gap-2">
@@ -53,7 +54,7 @@ export default function FiltersBar({
       <div className="flex items-center gap-1 rounded border border-slate-300 bg-white px-2 py-1">
         <span className="text-xs text-slate-500">Recámaras</span>
         {BEDS_OPTIONS.map((opt) => {
-          const active = filters.beds_min === opt.value;
+          const active = safeFilters.beds_min === opt.value;
           return (
             <button
               key={opt.label}
@@ -72,7 +73,7 @@ export default function FiltersBar({
       {/* Precio máximo */}
       <select
         className="h-9 rounded border border-slate-300 bg-white px-2 text-sm font-medium text-slate-700"
-        value={filters.max_price ?? ""}
+        value={safeFilters.max_price ?? ""}
         onChange={(e) =>
           setField(
             "max_price",
@@ -92,7 +93,7 @@ export default function FiltersBar({
       {states.length > 0 && (
         <select
           className="h-9 rounded border border-slate-300 bg-white px-2 text-sm font-medium text-slate-700"
-          value={filters.state ?? ""}
+          value={safeFilters.state ?? ""}
           onChange={(e) =>
             setField("state", e.target.value === "" ? null : e.target.value)
           }
@@ -111,11 +112,11 @@ export default function FiltersBar({
       <button
         type="button"
         className={`rounded border px-3 py-2 text-sm font-medium ${
-          filters.is_featured
+          safeFilters.is_featured
             ? "border-amber-500 bg-amber-50 text-amber-700"
             : "border-slate-300 bg-white text-slate-700"
         }`}
-        onClick={() => setField("is_featured", !filters.is_featured)}
+        onClick={() => setField("is_featured", !safeFilters.is_featured)}
       >
         Destacados ★
       </button>
