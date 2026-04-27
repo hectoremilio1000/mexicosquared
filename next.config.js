@@ -89,6 +89,11 @@ const nextConfig = {
         protocol: "https",
         hostname: "source.unsplash.com",
       },
+      // Demo Oaxaca curado: Wikimedia Commons (fotos reales públicas).
+      {
+        protocol: "https",
+        hostname: "upload.wikimedia.org",
+      },
     ],
     deviceSizes: [320, 480, 640, 800, 1024, 1280, 1600],
     imageSizes: [64, 128, 256, 384, 512],
