@@ -1,6 +1,7 @@
 // /Users/hectoremilio/Proyectos/nextjs/gabana_real_estate/pages/index.js
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import HeroMap from "../components/HeroMap";
 import { HomeListingsView } from "../components/HomeListingsView";
 import { fetchPublicListings } from "../lib/api";
 import Head from "next/head";
@@ -19,11 +20,15 @@ export default function Home({ initialResponse }) {
         />
       </Head>
       <Header />
-      <main className="mx-auto w-full max-w-7xl space-y-8 px-0 pb-10 md:px-4 md:py-6">
-        <HomeListingsView
-          initialResponse={initialResponse}
-          defaultOperation="venta"
-        />
+      <main className="flex flex-col space-y-8 pb-10">
+        <HeroMap />
+        <div className="mx-auto w-full max-w-7xl space-y-8 px-0 md:px-4 md:py-6">
+          <HomeListingsView
+            initialResponse={initialResponse}
+            defaultOperation="venta"
+            hideHero
+          />
+        </div>
       </main>
       <Footer />
     </div>

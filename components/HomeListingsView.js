@@ -23,7 +23,7 @@ function emptyFilters() {
   };
 }
 
-export function HomeListingsView({ initialResponse, defaultOperation = "venta" }) {
+export function HomeListingsView({ initialResponse, defaultOperation = "venta", hideHero = false }) {
   // initialResponse = { data, meta } del SSR. Si la página vieja todavía pasa
   // un array plano (initialListings), lo envolvemos para no romper.
   const initial = useMemo(() => {
@@ -160,6 +160,7 @@ export function HomeListingsView({ initialResponse, defaultOperation = "venta" }
 
   return (
     <>
+      {!hideHero && (
       <section className="relative overflow-hidden rounded-none border-b border-slate-200 bg-slate-950 text-white md:rounded-xl md:border">
         <div className="absolute inset-0 opacity-45">
           <img
@@ -219,6 +220,7 @@ export function HomeListingsView({ initialResponse, defaultOperation = "venta" }
           </div>
         </div>
       </section>
+      )}
 
       <div className="grid gap-6 lg:grid-cols-[minmax(0,760px)_1fr]">
         <section id="propiedades" className="space-y-4">

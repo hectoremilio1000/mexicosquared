@@ -53,7 +53,7 @@ export default function SearchBar({
           e.preventDefault();
           onSubmit?.();
         }}
-        className="grid gap-2 sm:grid-cols-[1fr_140px_180px_auto]"
+        className="grid grid-cols-1 gap-2 sm:grid-cols-[1fr_140px_180px_auto]"
       >
         <label className="relative block">
           <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
@@ -95,7 +95,7 @@ export default function SearchBar({
 
         <button
           type="submit"
-          className="h-12 rounded bg-blue-700 px-5 text-sm font-semibold text-white hover:bg-blue-800"
+          className="h-12 rounded bg-blue-700 px-4 text-sm font-semibold text-white hover:bg-blue-800 whitespace-nowrap"
         >
           Buscar
         </button>
