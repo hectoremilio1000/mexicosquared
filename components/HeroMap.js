@@ -15,7 +15,16 @@ export default function HeroMap() {
     async function loadItems() {
       try {
         setLoading(true);
-        const response = await fetchPublicListings({ per_page: 200 });
+        // El backend tiene max 100 en per_page. Para mostrar el mapa de toda
+        // la república con todos los pins, traemos 2 páginas en paralelo.
+        const [page1, page2] = await Promise.all([
+          fetchPublicListings({ per_page: 100, page: 1 }),
+          fetchPublicListings({ per_page: 100, page: 2 }),
+        ]);
+        const response = {
+          data: [...(page1.data || []), ...(page2.data || [])],
+          meta: page1.meta,
+        };
         if (!cancelled) {
           setItems(response.data || []);
         }
