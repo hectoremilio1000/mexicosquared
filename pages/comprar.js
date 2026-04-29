@@ -1,26 +1,46 @@
 import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import HeroMap from "../components/HeroMap";
 import { HomeListingsView } from "../components/HomeListingsView";
 import { fetchPublicListings } from "../lib/api";
 import { siteConfig } from "../lib/siteConfig";
 
 export default function Comprar({ initialResponse }) {
+  const pageTitle = `Comprar propiedades | ${siteConfig.brandName}`;
+  const description =
+    "Explora propiedades en venta verificadas por agentes de Gabana en toda la república mexicana.";
+  const ogImage = `${siteConfig.siteUrl}/og-image.png`;
+
   return (
     <div className="min-h-screen flex flex-col bg-slate-50">
       <Head>
-        <title>Comprar propiedades | {siteConfig.brandName}</title>
-        <meta
-          name="description"
-          content="Explora propiedades en venta verificadas por agentes de Gabana en toda la república mexicana."
-        />
+        <title>{pageTitle}</title>
+        <meta name="description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content={siteConfig.brandName} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={`${siteConfig.siteUrl}/comprar`} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:locale" content="es_MX" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImage} />
       </Head>
       <Header />
-      <main className="mx-auto w-full max-w-7xl space-y-8 px-0 pb-10 md:px-4 md:py-6">
-        <HomeListingsView
-          initialResponse={initialResponse}
-          defaultOperation="venta"
-        />
+      <main className="flex flex-col space-y-8 pb-10">
+        <HeroMap defaultOperation="venta" />
+        <div className="mx-auto w-full max-w-7xl space-y-8 px-0 md:px-4 md:py-6">
+          <HomeListingsView
+            initialResponse={initialResponse}
+            defaultOperation="venta"
+            hideHero
+          />
+        </div>
       </main>
       <Footer />
     </div>

@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import MapboxMap from "./MapboxMap";
 import { fetchPublicListings } from "../lib/api";
 
-export default function HeroMap() {
+export default function HeroMap({ defaultOperation = "venta" } = {}) {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
-  const [operation, setOperation] = useState("venta");
+  const [operation, setOperation] = useState(defaultOperation);
 
   // Cargar listings al montar (max 200 para el mapa hero)
   useEffect(() => {

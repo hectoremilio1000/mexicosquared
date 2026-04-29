@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="20%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Logo G circular -->
+  <circle cx="180" cy="200" r="60" fill="#FFFFFF"/>
+  <text x="180" y="240" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="80" font-weight="900" fill="#0F172A" text-anchor="middle">G</text>
+  <text x="260" y="190" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="32" font-weight="700" fill="#FFFFFF">Gabana</text>
+  <text x="260" y="225" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="20" fill="#94A3B8">Real Estate</text>
+
+  <!-- Eyebrow -->
+  <text x="100" y="340" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="22" font-weight="600" fill="#60A5FA" letter-spacing="3">EL MLS DONDE ESTÁN LOS AGENTES DE MÉXICO</text>
+
+  <!-- Headline -->
+  <text x="100" y="410" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="58" font-weight="700" fill="#FFFFFF">Encuentra propiedades reales</text>
+  <text x="100" y="475" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="58" font-weight="700" fill="#FFFFFF">con agentes verificados.</text>
+
+  <!-- Stats line -->
+  <g transform="translate(100,540)">
+    <rect x="0" y="0" width="180" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.15"/>
+    <text x="20" y="32" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">67</text>
+    <text x="55" y="32" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="16" fill="#CBD5E1">Propiedades</text>
+
+    <rect x="200" y="0" width="180" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.15"/>
+    <text x="220" y="32" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">9</text>
+    <text x="245" y="32" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="16" fill="#CBD5E1">Estados</text>
+
+    <rect x="400" y="0" width="180" height="50" rx="8" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.15"/>
+    <text x="420" y="32" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">35</text>
+    <text x="455" y="32" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="16" fill="#CBD5E1">Zonas</text>
+  </g>
+
+  <text x="1100" y="600" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="18" fill="#64748B" text-anchor="end">gabanarealstate.com.mx</text>
+</svg>
